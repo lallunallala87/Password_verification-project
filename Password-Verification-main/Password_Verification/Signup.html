@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <title>  Signup  </title>
+	   <link rel="stylesheet" href="Signup.css">
+   </head>
+   
+   <body>
+	  
+	  <form id= "forms" action="signup.php"  method="post">
+	  <h1> Signup </h1>
+	      <div class="form-collect">
+            <label for="name" id="label-name">
+                Name
+            </label>
+ 
+            
+            <input type="text" size="20"  pattern="^([A-Za-z]+[,.]?[ ]?|[A-Za-z]+['-]?)+$"
+                   id="name" name="name" required title="Name may contain only letters and spaces"
+                    />
+        </div>
+  
+        <div class="form-collect">
+            <label for="username" id="label-username">
+                Username
+            </label>
+ 
+            
+            <input type="text" size="20" pattern="[_a-z][a-z0-9_]{3,24}"
+                   id="username" name="username" required 
+				   title="Usernames may contain only digits and lower case letters and underscores"
+                    />
+        </div>
+		
+		<div class="form-collect">
+            <label for="Password" id="label-Password">
+				    Password
+				</label>
+				
+				<input type="password" id="password" name="password"
+				pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"   onChange="onChange()"
+				title="Must contain at least one number and one uppercase and 
+				lowercase letter, and at least 8 or more characters"
+				required size="20"
+			 />
+				
+				</div>
+				
+		<div class="form-collect">
+            <label for="confirm-Password" id="label-confirm-Password"  >
+				    Confirm-Password
+				</label>
+				
+				<input type="password" id="confirm-password" name="confirm"
+				title="Confirm Your Password " onkeyup="Error()" onChange="onChange()"
+				required size="20"
+				 />
+				
+				</div>
+				<script> 
+function onChange() {
+  const password = document.querySelector('input[name=password]');
+  const confirm = document.querySelector('input[name=confirm]');
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } else {
+    confirm.setCustomValidity('Passwords do not match');
+  }
+}
+
+
+</script>
+			<h4 id="error" class="matched"> </h4>
+		
+		
+	<div width="100%" class="buttons">
+				 <button id="button1">  Submit </button>
+				
+	      
+			<a href="Login.html"  >
+		        <label id="button2"> Back </label>
+				 </a>
+	</div>
+		</form>
+		<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+<script src="validation.js" > </script>
+			
+   </body>
+</html>
